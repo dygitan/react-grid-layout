@@ -1,0 +1,36 @@
+body {
+  padding: 50px;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.col {
+  border: solid 2px red;
+}
+
+@for $index from 1 through 12 {
+  .col-sm-#{$index} {
+    @media (max-width: 540px) {
+      border-style: groove !important;
+      border-width: 1px;
+      grid-column: span (($index / 12) * 12) !important;
+    }
+  }
+
+  .col-md-#{$index} {
+    @media (min-width: 540px) and (max-width: 720px) {
+      border-style: inset !important;
+      border-width: 1px;
+      grid-column: span (($index / 12) * 12) !important;
+    }
+  }
+
+  .col-lg-#{$index} {
+    border-style: dashed;
+    grid-column: span (($index / 12) * 12);
+  }
+}
